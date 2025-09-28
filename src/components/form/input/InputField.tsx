@@ -42,7 +42,7 @@ const Input: FC<InputProps> = ({
 }) => {
   const isDate = type === "date";
 
-  let inputClasses = `h-11 w-full rounded-lg border text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 ${className}`;
+  let inputClasses = `h-11 w-full rounded-lg border text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 px-4 ${className}`;
 
   if (!isDate) inputClasses += " appearance-none"; // jangan pakai appearance-none untuk date
   if (isDate) inputClasses += " cursor-pointer";

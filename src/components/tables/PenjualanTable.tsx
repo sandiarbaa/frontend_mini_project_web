@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "../ui/table";
 import Link from "next/link";
 import { Modal } from "../ui/modal";
 import Button from "../ui/button/Button";
 import { useModal } from "@/hooks/useModal";
+import api from "@/lib/api";
 
 interface BarangItem {
   id: number;
@@ -44,7 +44,7 @@ export default function PenjualanTable({ onDeleteSuccess }: { onDeleteSuccess: (
 
   const fetchPenjualan = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/penjualans");
+      const res = await api.get("/penjualans");
       setResponse(res.data);
     } catch (error) {
       console.error("Gagal fetch penjualan:", error);
@@ -58,7 +58,7 @@ export default function PenjualanTable({ onDeleteSuccess }: { onDeleteSuccess: (
   const handleDelete = async () => {
     if (!selectedId) return;
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/penjualans/${selectedId}`);
+      await api.delete(`/penjualans/${selectedId}`);
       fetchPenjualan();
       closeModal();
       onDeleteSuccess();

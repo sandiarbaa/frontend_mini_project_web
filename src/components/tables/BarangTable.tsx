@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import {
   Table,
   TableBody,
@@ -13,6 +12,7 @@ import Link from "next/link";
 import { Modal } from "../ui/modal";
 import Button from "../ui/button/Button";
 import { useModal } from "@/hooks/useModal";
+import api from "@/lib/api";
 
 interface ApiResponse {
   statusCode: number;
@@ -38,7 +38,7 @@ export default function BarangTable({ onDeleteSuccess }: { onDeleteSuccess: () =
 
   const fetchBarangs = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/barangs");
+      const res = await api.get("/barangs"); 
       setResponse(res.data);
     } catch (error) {
       console.error("Gagal fetch barang:", error);
@@ -54,7 +54,7 @@ export default function BarangTable({ onDeleteSuccess }: { onDeleteSuccess: () =
   const handleDelete = async () => {
     if (!selectedId) return;
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/barangs/${selectedId}`);
+      await api.delete(`/barangs/${selectedId}`);
       fetchBarangs();
       closeModal();
       onDeleteSuccess();
