@@ -122,7 +122,7 @@ export default function PelangganTable({ onDeleteSuccess }: { onDeleteSuccess: (
                         >
                           Edit
                         </Link>
-                        <button
+                        <button 
                           onClick={() => {
                             setSelectedId(p.id);
                             openModal();
