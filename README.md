@@ -19,7 +19,7 @@ Ikuti langkah-langkah di bawah ini secara berurutan untuk menjalankan proyek:
 
 # Clone repo
 ```bash
-git clone [link-repo-backend] nama-folder
+git clone [link-repo-frontend-web] nama-folder
 cd nama-folder
 ```
 
